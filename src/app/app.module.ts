@@ -16,18 +16,21 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { RecipesModule } from './recipes/recipes.modules';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AuthComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     RecipesModule,
     ShoppingListModule,
     SharedModule,
+    AppRoutingModule,
   ],
   providers: [
     ShoppingListService,
